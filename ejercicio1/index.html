@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aqua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fetch básico · Usuarios</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="usuarios.js" defer></script>
+</head>
+<body class="min-h-screen bg-base-200">
+    <nav class="navbar bg-primary text-primary-content shadow">
+        <div class="navbar-start px-4">
+            <span class="text-lg font-bold">Unidad 5 · Fetch básico</span>
+        </div>
+        <div class="navbar-end px-4">
+            <a class="btn btn-sm" href="../index.html">Ir al CRUD</a>
+        </div>
+    </nav>
+
+    <main class="mx-auto max-w-5xl px-4 py-8">
+        <header class="mb-6">
+            <p class="text-sm font-bold uppercase tracking-wide text-base-content/60">Ejercicio 1</p>
+            <h1 class="text-3xl font-bold">Usuarios de JSONPlaceholder</h1>
+            <p class="mt-2 text-base-content/70">Datos obtenidos desde una API pública mediante <code>fetch()</code>.</p>
+        </header>
+
+        <div id="mensaje-error" role="alert" class="alert alert-error alert-soft mb-6" aria-live="polite" hidden></div>
+
+        <section class="card bg-base-100 shadow">
+            <div class="card-body">
+                <div class="flex items-center justify-between gap-4">
+                    <h2 class="card-title">Listado de usuarios</h2>
+                    <button id="boton-recargar" class="btn btn-primary" type="button">Recargar</button>
+                </div>
+
+                <div id="indicador-carga" class="flex items-center gap-2 py-4" role="status" aria-live="polite" hidden>
+                    <span class="loading loading-spinner loading-sm" aria-hidden="true"></span>
+                    <span>Cargando...</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Ciudad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-usuarios"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

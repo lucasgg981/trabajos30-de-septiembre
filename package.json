@@ -1,5 +1,5 @@
 {
-  "name": "unidad4",
+  "name": "trabajos30-de-septiembre",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucasgg981/sistema_estudiante.git"
+    "url": "git+https://github.com/lucasgg981/trabajos30-de-septiembre.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lucasgg981/sistema_estudiante/issues"
+    "url": "https://github.com/lucasgg981/trabajos30-de-septiembre/issues"
   },
-  "homepage": "https://github.com/lucasgg981/sistema_estudiante#readme",
+  "homepage": "https://github.com/lucasgg981/trabajos30-de-septiembre#readme",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/oxide-linux-x64-gnu": "^4.3.3",

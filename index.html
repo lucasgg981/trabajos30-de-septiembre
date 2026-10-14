@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="aqua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRUD de estudiantes con Fetch</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/estudiantes.js" defer></script>
+</head>
+<body class="min-h-screen bg-base-200">
+    <nav class="navbar bg-primary text-primary-content shadow">
+        <div class="navbar-start px-4">
+            <span class="text-lg font-bold">Unidad 5 · Estudiantes</span>
+        </div>
+        <div class="navbar-end px-4">
+            <a class="btn btn-sm" href="ejercicio1/">Ver ejercicio 1</a>
+        </div>
+    </nav>
+
+    <main class="mx-auto max-w-5xl px-4 py-8">
+        <header class="mb-6">
+            <p class="text-sm font-bold uppercase tracking-wide text-base-content/60">Ejercicios 2 y 3</p>
+            <h1 class="text-3xl font-bold">Gestión de estudiantes con Fetch</h1>
+            <p class="mt-2 text-base-content/70">Altas, búsquedas, edición y eliminación sin recargar la página.</p>
+        </header>
+
+        <div id="feedback" role="alert" class="alert alert-soft mb-6" aria-live="polite" hidden></div>
+
+        <section class="card mb-6 bg-base-100 shadow">
+            <div class="card-body">
+                <h2 class="card-title">Agregar estudiante</h2>
+                <form id="form-crear" class="grid grid-cols-1 gap-4 md:grid-cols-3" novalidate>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Nombre</legend>
+                        <input class="input w-full" type="text" name="nombre" maxlength="100" required autocomplete="given-name" placeholder="Ej.: Ana">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Apellido</legend>
+                        <input class="input w-full" type="text" name="apellido" maxlength="100" required autocomplete="family-name" placeholder="Ej.: Pérez">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="fieldset-legend">Email</legend>
+                        <input class="input w-full" type="email" name="email" maxlength="150" required autocomplete="email" placeholder="ana@ejemplo.com">
+                    </fieldset>
+                    <div class="md:col-span-3">
+                        <button id="boton-crear" class="btn btn-primary" type="submit">Agregar estudiante</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="card bg-base-100 shadow">
+            <div class="card-body">
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <fieldset class="fieldset w-full sm:max-w-md">
+                        <legend class="fieldset-legend">Buscar en tiempo real</legend>
+                        <input id="buscador" class="input w-full" type="search" placeholder="Nombre, apellido o email" autocomplete="off">
+                    </fieldset>
+                    <button id="boton-recargar" class="btn" type="button">Recargar</button>
+                </div>
+
+                <div id="indicador-carga" class="flex items-center gap-2 py-4" role="status" aria-live="polite" hidden>
+                    <span class="loading loading-spinner loading-sm" aria-hidden="true"></span>
+                    <span>Cargando estudiantes...</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th>Nombre y apellido</th>
+                                <th>Email</th>
+                                <th class="text-right">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-estudiantes"></tbody>
+                    </table>
+                </div>
+                <p id="total-estudiantes" class="text-sm text-base-content/70">0 estudiantes</p>
+            </div>
+        </section>
+    </main>
+
+    <dialog id="modal-editar" class="modal">
+        <div class="modal-box">
+            <h2 class="text-xl font-bold">Editar estudiante</h2>
+            <form id="form-editar" class="mt-4 flex flex-col gap-4" novalidate>
+                <input type="hidden" name="id">
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Nombre</legend>
+                    <input class="input w-full" type="text" name="nombre" maxlength="100" required autocomplete="given-name">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Apellido</legend>
+                    <input class="input w-full" type="text" name="apellido" maxlength="100" required autocomplete="family-name">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <legend class="fieldset-legend">Email</legend>
+                    <input class="input w-full" type="email" name="email" maxlength="150" required autocomplete="email">
+                </fieldset>
+                <div class="modal-action">
+                    <button id="cerrar-modal" class="btn" type="button">Cancelar</button>
+                    <button id="boton-editar" class="btn btn-primary" type="submit">Guardar cambios</button>
+                </div>
+            </form>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button aria-label="Cerrar ventana de edición">Cerrar</button>
+        </form>
+    </dialog>
+</body>
+</html>
